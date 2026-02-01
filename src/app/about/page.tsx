@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { GearSection } from "@/components/GearSection";
 
 export const metadata: Metadata = {
   title: "About | PixByNick Photography",
@@ -131,73 +132,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Equipment Section */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-sm uppercase tracking-[0.3em] text-orange mb-4 block">Equipment</span>
-            <h2 className="text-4xl md:text-6xl font-display text-foreground mb-6">
-              MY GEAR
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              The tools I use to bring my vision to life
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="card p-8 group">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 flex items-center justify-center border border-border group-hover:border-orange group-hover:bg-orange/10 transition-all duration-300 mr-4">
-                  <svg className="w-6 h-6 text-muted group-hover:text-orange transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-display text-foreground group-hover:text-orange transition-colors">
-                  Camera Bodies
-                </h3>
-              </div>
-              <ul className="space-y-3 text-muted">
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-orange mr-3" />
-                  Your camera body here
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-orange mr-3" />
-                  Your backup camera here
-                </li>
-              </ul>
-            </div>
-
-            <div className="card p-8 group">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 flex items-center justify-center border border-border group-hover:border-orange group-hover:bg-orange/10 transition-all duration-300 mr-4">
-                  <svg className="w-6 h-6 text-muted group-hover:text-orange transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-display text-foreground group-hover:text-orange transition-colors">
-                  Lenses
-                </h3>
-              </div>
-              <ul className="space-y-3 text-muted">
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-orange mr-3" />
-                  Your primary lens here
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-orange mr-3" />
-                  Your telephoto lens here
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-orange mr-3" />
-                  Your wide-angle lens here
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Gear Section */}
+      <GearSection />
 
       {/* CTA Section */}
       <section className="py-24 bg-surface-elevated relative overflow-hidden">
