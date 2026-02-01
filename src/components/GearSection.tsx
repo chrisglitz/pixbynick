@@ -428,17 +428,6 @@ function ViewfinderCorners() {
   );
 }
 
-function FocusPoints({ active }: { active?: boolean }) {
-  return (
-    <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity duration-300">
-      {/* Center focus point */}
-      <div className={`w-6 h-6 border ${active ? "border-orange" : "border-white/50"} transition-colors duration-300`}>
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 ${active ? "bg-orange" : "bg-white/50"} transition-colors duration-300`} />
-      </div>
-    </div>
-  );
-}
-
 function GearCard({ item, index }: { item: GearItem; index: number }) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -461,8 +450,6 @@ function GearCard({ item, index }: { item: GearItem; index: number }) {
           }}
         />
 
-        {/* Focus points overlay */}
-        <FocusPoints active={isHovered} />
 
         {/* Gear icon */}
         <div className="absolute inset-0 flex items-center justify-center p-8">
