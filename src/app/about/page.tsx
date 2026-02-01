@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,21 +13,23 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Photo placeholder */}
+          {/* Profile Photo */}
           <div className="relative">
             <div className="aspect-[4/5] bg-surface-elevated relative overflow-hidden group">
               {/* Decorative corners */}
-              <div className="absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-orange/50" />
-              <div className="absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-orange/50" />
+              <div className="absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-orange/50 z-10" />
+              <div className="absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-orange/50 z-10" />
 
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-24 h-24 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <div className="absolute bottom-8 left-8 right-8 text-center text-muted text-sm">
-                Your photo here
-              </div>
+              <Image
+                src="/images/nick-profile.png"
+                alt="Nick - Photographer"
+                fill
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                priority
+              />
+
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Floating accent */}
