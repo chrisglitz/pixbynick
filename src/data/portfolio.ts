@@ -25,6 +25,7 @@ export const categories: { id: Category; label: string }[] = [
   { id: "nature", label: "Nature" },
   { id: "sports", label: "Sports" },
   { id: "portraits", label: "Portraits" },
+  { id: "street", label: "Street" },
 ];
 
 export const photos: Photo[] = [
@@ -568,6 +569,82 @@ export const photos: Photo[] = [
     width: 6000,
     height: 4000,
     date: "2016-05-29",
+  },
+
+  // Winter Decor
+  {
+    id: "decor-01",
+    src: "/images/portfolio/decor-01.jpg",
+    alt: "Winter pinecone and evergreen decoration",
+    title: "Winter Greens",
+    category: "events",
+    width: 1920,
+    height: 1280,
+    date: "2020-12-15",
+  },
+
+  // Landscape & Nature - New additions
+  {
+    id: "harbor-01",
+    src: "/images/portfolio/harbor-01.jpg",
+    alt: "Industrial port with cargo ships and cranes",
+    title: "Harbor View",
+    category: "nature",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-19",
+  },
+  {
+    id: "countryside-01",
+    src: "/images/portfolio/countryside-01.jpg",
+    alt: "Rural barn in green countryside",
+    title: "Country Barn",
+    category: "nature",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-19",
+  },
+  {
+    id: "landscape-01",
+    src: "/images/portfolio/landscape-01.jpg",
+    alt: "Rolling hills and distant mountains",
+    title: "Summer Hills",
+    category: "nature",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-19",
+  },
+  {
+    id: "mountain-01",
+    src: "/images/portfolio/mountain-01.jpg",
+    alt: "Mountain vista with dramatic clouds",
+    title: "Mountain Vista",
+    category: "nature",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-19",
+  },
+  {
+    id: "mountain-02",
+    src: "/images/portfolio/mountain-02.jpg",
+    alt: "Forested mountain with village nestled below",
+    title: "Mountain Village",
+    category: "nature",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-20",
+  },
+
+  // Street Photography
+  {
+    id: "train-01",
+    src: "/images/portfolio/train-01.jpg",
+    alt: "Vintage Reading & Northern railroad train",
+    title: "Reading Railroad",
+    category: "street",
+    width: 1920,
+    height: 1280,
+    date: "2020-08-20",
   },
 ];
 
