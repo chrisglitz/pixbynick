@@ -49,7 +49,7 @@ export default function ContactPage() {
                       </svg>
                     ),
                     label: "Email",
-                    value: "Nickglanden14@gmail.com",
+                    value: "nickglanden14@yahoo.com",
                   },
                   {
                     icon: (
