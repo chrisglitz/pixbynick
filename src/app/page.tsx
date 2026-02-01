@@ -130,7 +130,7 @@ export default function Home() {
               WHAT I CAPTURE
             </h2>
             <p className="text-muted max-w-2xl mx-auto">
-              From intimate moments to grand celebrations, I specialize in capturing the essence of every occasion
+              From intimate moments to grand celebrations, I capture genuine moments that are fun, personal, and full of life - using creativity and technology to bring every story to life.
             </p>
           </div>
 
