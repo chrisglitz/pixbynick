@@ -114,12 +114,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 animate-fade-in stagger-4">
-          <span className="text-xs uppercase tracking-widest text-muted mb-2">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-orange to-transparent" />
-        </div>
-
         {/* Corner accents */}
         <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-orange/30" />
         <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-orange/30" />
