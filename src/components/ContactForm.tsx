@@ -20,8 +20,6 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("submitting");
 
-    // Simulate form submission
-    // In production, you would send this to your backend or a service like Formspree
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setStatus("success");
@@ -34,7 +32,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="name" className="block text-sm font-medium uppercase tracking-widest text-muted mb-3">
           Name
         </label>
         <input
@@ -44,13 +42,13 @@ export default function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+          className="input"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="email" className="block text-sm font-medium uppercase tracking-widest text-muted mb-3">
           Email
         </label>
         <input
@@ -60,13 +58,13 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+          className="input"
           placeholder="your@email.com"
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium uppercase tracking-widest text-muted mb-3">
           Subject
         </label>
         <select
@@ -75,7 +73,7 @@ export default function ContactForm() {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors"
+          className="input"
         >
           <option value="">Select a subject</option>
           <option value="event">Event Photography</option>
@@ -87,7 +85,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium uppercase tracking-widest text-muted mb-3">
           Message
         </label>
         <textarea
@@ -97,7 +95,7 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent transition-colors resize-none"
+          className="input resize-none"
           placeholder="Tell me about your project..."
         />
       </div>
@@ -105,7 +103,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full px-6 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === "submitting" ? (
           <span className="flex items-center justify-center">
@@ -121,9 +119,9 @@ export default function ContactForm() {
       </button>
 
       {status === "success" && (
-        <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200">
+        <div className="p-4 border border-orange bg-orange/10 text-foreground animate-slide-up">
           <p className="flex items-center">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 mr-3 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             Thank you! Your message has been sent successfully.
@@ -132,9 +130,9 @@ export default function ContactForm() {
       )}
 
       {status === "error" && (
-        <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200">
+        <div className="p-4 border border-red-500 bg-red-500/10 text-foreground animate-slide-up">
           <p className="flex items-center">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 mr-3 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
             Something went wrong. Please try again.

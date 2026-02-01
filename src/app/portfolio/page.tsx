@@ -8,14 +8,19 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <div className="py-16">
+    <div className="py-8">
       {/* Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Portfolio
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center relative">
+          {/* Decorative elements */}
+          <div className="absolute top-1/2 left-0 w-1/4 h-px bg-gradient-to-r from-transparent to-orange/30 hidden lg:block" />
+          <div className="absolute top-1/2 right-0 w-1/4 h-px bg-gradient-to-l from-transparent to-orange/30 hidden lg:block" />
+
+          <span className="text-sm uppercase tracking-[0.3em] text-orange mb-4 block">My Work</span>
+          <h1 className="text-5xl md:text-7xl font-display text-foreground mb-6">
+            PORTFOLIO
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-muted max-w-2xl mx-auto">
             A collection of my favorite captures across various categories.
             Click on any image to view it in full size.
           </p>
