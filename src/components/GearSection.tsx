@@ -7,7 +7,7 @@ type GearCategory = "camera" | "lenses" | "audio" | "lighting" | "support";
 interface GearItem {
   name: string;
   category: GearCategory;
-  image: string;
+  icon: "camera" | "lens-wide" | "lens-tele" | "case" | "mic-wireless" | "mic-xlr" | "tripod" | "light-small" | "light-rgb";
   specs: { label: string; value: string }[];
   highlight?: string;
 }
@@ -16,7 +16,7 @@ const gearData: GearItem[] = [
   {
     name: "Nikon D5600",
     category: "camera",
-    image: "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8u3IfGWoRTlu0A8HvvCYbvGQ==/Views/1575_D5600_702T_front.png",
+    icon: "camera",
     highlight: "24.2MP DX-Format CMOS",
     specs: [
       { label: "SENSOR", value: "24.2 MP" },
@@ -30,7 +30,7 @@ const gearData: GearItem[] = [
   {
     name: "AF-P DX 18-55mm VR",
     category: "lenses",
-    image: "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8u3IfGWoRTlu0O0x-AJRVRTg==/Views/20059_AFP_DX_18_55_front.png",
+    icon: "lens-wide",
     highlight: "Versatile Kit Lens",
     specs: [
       { label: "APERTURE", value: "f/3.5-5.6" },
@@ -44,7 +44,7 @@ const gearData: GearItem[] = [
   {
     name: "AF-P DX 70-300mm VR",
     category: "lenses",
-    image: "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8u3IfGWoRTlu3BPHFZx4IWjQ==/Views/20062_AFP_70_300_front.png",
+    icon: "lens-tele",
     highlight: "Telephoto Reach",
     specs: [
       { label: "APERTURE", value: "f/4.5-6.3" },
@@ -58,7 +58,7 @@ const gearData: GearItem[] = [
   {
     name: "NANUK 935",
     category: "support",
-    image: "https://m.media-amazon.com/images/I/81ZkSsZYmCL._AC_SL1500_.jpg",
+    icon: "case",
     highlight: "IP67 Waterproof Case",
     specs: [
       { label: "EXTERIOR", value: '22" x 14" x 9"' },
@@ -72,7 +72,7 @@ const gearData: GearItem[] = [
   {
     name: "7RYMS iRay DW20",
     category: "audio",
-    image: "https://m.media-amazon.com/images/I/61Zh2hL+VrL._AC_SL1500_.jpg",
+    icon: "mic-wireless",
     highlight: "Dual Wireless System",
     specs: [
       { label: "RANGE", value: "100m / 328ft" },
@@ -86,7 +86,7 @@ const gearData: GearItem[] = [
   {
     name: "Maono XLR Mics",
     category: "audio",
-    image: "https://m.media-amazon.com/images/I/61v4z9VSKPL._AC_SL1500_.jpg",
+    icon: "mic-xlr",
     highlight: "Studio Wired Audio",
     specs: [
       { label: "TYPE", value: "Dynamic XLR" },
@@ -100,7 +100,7 @@ const gearData: GearItem[] = [
   {
     name: 'K&F Concept 86.6" Tripod',
     category: "support",
-    image: "https://m.media-amazon.com/images/I/51KZVrJj+WL._AC_SL1500_.jpg",
+    icon: "tripod",
     highlight: "Light Stand",
     specs: [
       { label: "MAX HEIGHT", value: '86.6" / 220cm' },
@@ -114,7 +114,7 @@ const gearData: GearItem[] = [
   {
     name: "ULANZI LED Light",
     category: "lighting",
-    image: "https://m.media-amazon.com/images/I/61lTJgvYmqL._AC_SL1500_.jpg",
+    icon: "light-small",
     highlight: "IP68 Waterproof",
     specs: [
       { label: "OUTPUT", value: "1000 LUX @0.5m" },
@@ -128,7 +128,7 @@ const gearData: GearItem[] = [
   {
     name: "Pixel G1s RGB",
     category: "lighting",
-    image: "https://m.media-amazon.com/images/I/61FtFRVl3EL._AC_SL1500_.jpg",
+    icon: "light-rgb",
     highlight: "Full RGB Control",
     specs: [
       { label: "OUTPUT", value: "1500 LUX @0.5m" },
@@ -140,6 +140,215 @@ const gearData: GearItem[] = [
     ],
   },
 ];
+
+function GearIcon({ type, className = "" }: { type: GearItem["icon"]; className?: string }) {
+  const baseClass = `${className} transition-all duration-500`;
+
+  switch (type) {
+    case "camera":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Camera body */}
+          <rect x="15" y="35" width="90" height="60" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Viewfinder hump */}
+          <path d="M35 35 L35 25 L55 25 L55 35" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Lens mount */}
+          <circle cx="60" cy="65" r="22" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="60" cy="65" r="16" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <circle cx="60" cy="65" r="8" stroke="var(--orange)" strokeWidth="2" fill="none" />
+          {/* Mode dial */}
+          <rect x="75" y="28" width="20" height="7" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          {/* Grip texture */}
+          <line x1="20" y1="45" x2="20" y2="85" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+          <line x1="24" y1="45" x2="24" y2="85" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+          <line x1="28" y1="45" x2="28" y2="85" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+        </svg>
+      );
+    case "lens-wide":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Lens barrel */}
+          <ellipse cx="60" cy="60" rx="35" ry="35" stroke="currentColor" strokeWidth="2" fill="none" />
+          <ellipse cx="60" cy="60" rx="28" ry="28" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <ellipse cx="60" cy="60" rx="20" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <ellipse cx="60" cy="60" rx="12" ry="12" stroke="var(--orange)" strokeWidth="2" fill="none" />
+          <circle cx="60" cy="60" r="4" fill="var(--orange)" opacity="0.6" />
+          {/* Focus ring marks */}
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <line
+              key={angle}
+              x1={60 + 32 * Math.cos((angle * Math.PI) / 180)}
+              y1={60 + 32 * Math.sin((angle * Math.PI) / 180)}
+              x2={60 + 38 * Math.cos((angle * Math.PI) / 180)}
+              y2={60 + 38 * Math.sin((angle * Math.PI) / 180)}
+              stroke="currentColor"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+          ))}
+          {/* 18-55 label */}
+          <text x="60" y="105" textAnchor="middle" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.6">18-55mm</text>
+        </svg>
+      );
+    case "lens-tele":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Extended barrel */}
+          <rect x="25" y="40" width="70" height="40" rx="20" stroke="currentColor" strokeWidth="2" fill="none" />
+          <ellipse cx="90" cy="60" rx="18" ry="18" stroke="currentColor" strokeWidth="2" fill="none" />
+          <ellipse cx="90" cy="60" rx="12" ry="12" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <ellipse cx="90" cy="60" rx="6" ry="6" stroke="var(--orange)" strokeWidth="2" fill="none" />
+          {/* Mount end */}
+          <ellipse cx="30" cy="60" rx="15" ry="18" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Zoom ring */}
+          <rect x="45" y="38" width="25" height="44" rx="4" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.5" />
+          {/* 70-300 label */}
+          <text x="60" y="105" textAnchor="middle" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.6">70-300mm</text>
+        </svg>
+      );
+    case "case":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Case body */}
+          <rect x="15" y="30" width="90" height="55" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Lid line */}
+          <line x1="15" y1="45" x2="105" y2="45" stroke="currentColor" strokeWidth="1.5" />
+          {/* Latches */}
+          <rect x="30" y="42" width="12" height="6" rx="1" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          <rect x="78" y="42" width="12" height="6" rx="1" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          {/* Handle */}
+          <path d="M45 30 L45 22 L75 22 L75 30" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Wheels */}
+          <circle cx="30" cy="90" r="5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <circle cx="90" cy="90" r="5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          {/* Pressure valve */}
+          <circle cx="95" cy="55" r="3" stroke="currentColor" strokeWidth="1" fill="none" />
+        </svg>
+      );
+    case "mic-wireless":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Transmitter 1 */}
+          <rect x="20" y="35" width="25" height="50" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="32" cy="50" r="6" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          <rect x="26" y="65" width="12" height="3" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          <rect x="26" y="72" width="12" height="3" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Transmitter 2 */}
+          <rect x="75" y="35" width="25" height="50" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="87" cy="50" r="6" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          <rect x="81" y="65" width="12" height="3" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          <rect x="81" y="72" width="12" height="3" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Wireless signals */}
+          <path d="M50 45 Q60 40 70 45" stroke="var(--orange)" strokeWidth="1.5" fill="none" opacity="0.6" />
+          <path d="M52 52 Q60 48 68 52" stroke="var(--orange)" strokeWidth="1.5" fill="none" opacity="0.4" />
+          <path d="M54 59 Q60 56 66 59" stroke="var(--orange)" strokeWidth="1.5" fill="none" opacity="0.2" />
+          {/* 2.4GHz label */}
+          <text x="60" y="105" textAnchor="middle" fill="currentColor" fontSize="10" fontFamily="monospace" opacity="0.6">2.4GHz</text>
+        </svg>
+      );
+    case "mic-xlr":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Microphone body */}
+          <rect x="50" y="20" width="20" height="60" rx="10" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* Grille */}
+          <ellipse cx="60" cy="35" rx="8" ry="12" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          <line x1="52" y1="30" x2="68" y2="30" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+          <line x1="52" y1="35" x2="68" y2="35" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+          <line x1="52" y1="40" x2="68" y2="40" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+          {/* XLR connector */}
+          <rect x="52" y="80" width="16" height="20" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="56" cy="90" r="2" stroke="currentColor" strokeWidth="1" fill="none" />
+          <circle cx="64" cy="90" r="2" stroke="currentColor" strokeWidth="1" fill="none" />
+          <circle cx="60" cy="95" r="2" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Stand mount */}
+          <path d="M45 70 L60 75 L75 70" stroke="currentColor" strokeWidth="1.5" fill="none" />
+        </svg>
+      );
+    case "tripod":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Head */}
+          <rect x="50" y="20" width="20" height="15" rx="2" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="60" cy="27" r="4" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          {/* Center column */}
+          <rect x="57" y="35" width="6" height="30" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          {/* Legs */}
+          <line x1="60" y1="65" x2="25" y2="100" stroke="currentColor" strokeWidth="2" />
+          <line x1="60" y1="65" x2="60" y2="100" stroke="currentColor" strokeWidth="2" />
+          <line x1="60" y1="65" x2="95" y2="100" stroke="currentColor" strokeWidth="2" />
+          {/* Leg locks */}
+          <rect x="35" y="75" width="8" height="4" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          <rect x="56" y="78" width="8" height="4" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          <rect x="77" y="75" width="8" height="4" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Feet */}
+          <circle cx="25" cy="100" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <circle cx="60" cy="100" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <circle cx="95" cy="100" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" />
+        </svg>
+      );
+    case "light-small":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Light body */}
+          <rect x="35" y="40" width="50" height="40" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* LED panel */}
+          <rect x="40" y="45" width="40" height="25" rx="2" stroke="var(--orange)" strokeWidth="1.5" fill="none" />
+          {/* LED dots */}
+          {[0, 1, 2, 3].map((row) =>
+            [0, 1, 2, 3, 4].map((col) => (
+              <circle
+                key={`${row}-${col}`}
+                cx={47 + col * 8}
+                cy={51 + row * 6}
+                r="1.5"
+                fill="var(--orange)"
+                opacity={0.3 + row * 0.15}
+              />
+            ))
+          )}
+          {/* Controls */}
+          <circle cx="50" cy="75" r="3" stroke="currentColor" strokeWidth="1" fill="none" />
+          <circle cx="70" cy="75" r="3" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Cold shoe mount */}
+          <rect x="52" y="35" width="16" height="5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          {/* IP68 badge */}
+          <text x="60" y="105" textAnchor="middle" fill="var(--orange)" fontSize="10" fontFamily="monospace" opacity="0.8">IP68</text>
+        </svg>
+      );
+    case "light-rgb":
+      return (
+        <svg className={baseClass} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Light body */}
+          <rect x="30" y="35" width="60" height="50" rx="4" stroke="currentColor" strokeWidth="2" fill="none" />
+          {/* RGB LED panel with gradient effect */}
+          <defs>
+            <linearGradient id="rgbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ff6b00" />
+              <stop offset="33%" stopColor="#ff0066" />
+              <stop offset="66%" stopColor="#6600ff" />
+              <stop offset="100%" stopColor="#00ffcc" />
+            </linearGradient>
+          </defs>
+          <rect x="35" y="40" width="50" height="30" rx="2" stroke="url(#rgbGradient)" strokeWidth="2" fill="none" />
+          {/* RGB glow effect */}
+          <rect x="38" y="43" width="44" height="24" rx="1" fill="var(--orange)" opacity="0.15" />
+          {/* Control dial */}
+          <circle cx="60" cy="78" r="5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          <line x1="60" y1="73" x2="60" y2="76" stroke="var(--orange)" strokeWidth="1.5" />
+          {/* Display */}
+          <rect x="40" y="73" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          <rect x="68" y="73" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="1" fill="none" />
+          {/* Cold shoe mount */}
+          <rect x="52" y="30" width="16" height="5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          {/* RGB label */}
+          <text x="60" y="105" textAnchor="middle" fill="var(--orange)" fontSize="10" fontFamily="monospace" opacity="0.8">RGB</text>
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 const categories: { id: GearCategory; label: string; icon: React.ReactNode }[] = [
   {
@@ -243,8 +452,8 @@ function GearCard({ item, index }: { item: GearItem; index: number }) {
       {/* Viewfinder overlay frame */}
       <ViewfinderCorners />
 
-      {/* Image container with viewfinder effect */}
-      <div className="relative aspect-square bg-black/20 overflow-hidden">
+      {/* Icon container with viewfinder effect */}
+      <div className="relative aspect-square bg-gradient-to-br from-surface-elevated to-surface overflow-hidden">
         {/* Scanline effect */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-10"
           style={{
@@ -255,16 +464,16 @@ function GearCard({ item, index }: { item: GearItem; index: number }) {
         {/* Focus points overlay */}
         <FocusPoints active={isHovered} />
 
-        {/* Product image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-110"
-        />
+        {/* Gear icon */}
+        <div className="absolute inset-0 flex items-center justify-center p-8">
+          <GearIcon
+            type={item.icon}
+            className={`w-full h-full text-muted/70 group-hover:text-foreground transition-all duration-500 ${isHovered ? "scale-110" : "scale-100"}`}
+          />
+        </div>
 
         {/* Exposure info overlay - top */}
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-3 text-[10px] font-mono text-white/50 pointer-events-none">
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 flex items-center gap-3 text-[10px] font-mono text-muted/50 pointer-events-none">
           <span className="tracking-wider">AF</span>
           <span className="w-1 h-1 bg-orange rounded-full animate-pulse" />
           <span className="tracking-wider">●REC</span>
