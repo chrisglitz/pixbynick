@@ -49,7 +49,7 @@ export default function ContactPage() {
                       </svg>
                     ),
                     label: "Email",
-                    value: "hello@pixbynick.com",
+                    value: "Nickglanden14@gmail.com",
                   },
                   {
                     icon: (
@@ -59,7 +59,7 @@ export default function ContactPage() {
                       </svg>
                     ),
                     label: "Location",
-                    value: "Your City, State",
+                    value: "Newark, Delaware",
                   },
                   {
                     icon: (
