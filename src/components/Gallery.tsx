@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { categories, getPhotosByCategory, type Category, type Photo } from "@/data/portfolio";
 
 interface LightboxProps {
@@ -61,13 +60,11 @@ function Lightbox({ photo, onClose, onPrev, onNext }: LightboxProps) {
         className="relative max-w-[90vw] max-h-[90vh] animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={photo.src}
           alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
           className="max-h-[85vh] w-auto object-contain"
-          priority
         />
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/80 to-transparent p-6">
           <h3 className="text-xl font-display text-foreground">{photo.title}</h3>
@@ -127,12 +124,12 @@ export default function Gallery() {
               onClick={() => setSelectedPhoto(photo)}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={photo.src}
                 alt={photo.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,12 +19,11 @@ export default function AboutPage() {
               <div className="absolute top-4 left-4 w-16 h-16 border-l-2 border-t-2 border-orange/50 z-10" />
               <div className="absolute bottom-4 right-4 w-16 h-16 border-r-2 border-b-2 border-orange/50 z-10" />
 
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/images/nick-profile.png"
                 alt="Nick - Photographer"
-                fill
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                priority
+                className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
               />
 
               {/* Hover overlay */}
